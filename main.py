@@ -1,6 +1,20 @@
+# app.py
 import streamlit as st
-st.title('나의 첫 웹 서비스 만들기!!')
-name = st.text_input('이름을 입력해주세요 : ')
-menu = st.selectbox('좋아하는 음식을 선택해주세요:', ['망고빙수','아몬드봉봉'])
-if st.button('인사말 생성') : 
-  st.write(name+'님! 당신이 좋아하는 음식은 '+menu+'이군요?! 저도 좋아요!!')
+
+# 제목
+st.title("약수 개수 확인기")
+
+# 사용자 입력
+number = st.number_input("숫자를 입력하세요", min_value=1, step=1)
+
+if st.button("약수 개수 확인"):
+    # 약수 개수 계산
+    count = 0
+    divisors = []
+    for i in range(1, number + 1):
+        if number % i == 0:
+            count += 1
+            divisors.append(i)
+    
+    st.write(f"{number}의 약수는 {count}개입니다.")
+    st.write("약수:", divisors)
